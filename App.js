@@ -1,21 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import store from './store';
-import HomePage from './components/HomePage';
-import DetailsPage from './components/DetailsPage';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import NavBar from "./Component/NavBar";
+import EmojiesHub from "./Component/EmojiesHub";
+import DetailedCategorieEmoji from "./Component/DetailedCategorieEmoji";
 
-const App = () => {
+function App() {
   return (
-    <Provider store={store}>
-      <Router>
+    <>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/details/:category" element={<DetailsPage />} />
+          <Route path="/" element={<NavBar/>}>
+          <Route path="/" element={<EmojiesHub/>}></Route>
+          <Route path="/emojies" element={<EmojiesHub/>}></Route>
+          <Route path="/detailedEmojies" element={<DetailedCategorieEmoji/>}></Route>
+          </Route>
         </Routes>
-      </Router>
-    </Provider>
+      </BrowserRouter>
+    </>
   );
-};
+}
 
 export default App;
